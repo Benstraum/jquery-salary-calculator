@@ -10,11 +10,11 @@
     <script src="./app.js"></script>
 </head>
 <div id="addEmployee">
-    <input id="firstName" placeholder="First Name">
-    <input id="lastName" placeholder="Last Name">
-    <input id="iD" placeholder="ID">
-    <input id="title" placeholder="Title">
-    <input id="annualSalary" placeholder="Annual Salary">
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <input type="number"id="iD" placeholder="ID">
+    <input type="text" id="title" placeholder="Title">
+    <input type="number" id="annualSalary" placeholder="Annual Salary">
     <button id="submitBtn">Submit</button>
 
 </div>
@@ -26,14 +26,16 @@
             <th>ID</th>
             <th>Title</th>
             <th>Annual Salary</th>
+            <th></th>
             </th>
     </thead>
     <tbody id="tableBody">
 
     </tbody>
 </table>
-<div id="employeeTable">
 
+<div id="employeeTable">
+    <h2>Total Monthly: <span id="totalCost"></span></h1>
 
 </div>
 
