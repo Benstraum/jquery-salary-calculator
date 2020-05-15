@@ -10,7 +10,13 @@ function readyNow() {
 
     $('#submitBtn').on('click', submitButton)
 
+    $('#tableBody').on('click', '#deleteButton', deleteHandler)
 };
+
+
+function deleteHandler(){
+    $(this).parent().parent().remove()
+}
 
 function submitButton() {
 
