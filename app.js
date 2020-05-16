@@ -2,6 +2,8 @@ $(document).ready(readyNow);
 
 let employeeArr = [];
 
+parseInt($('#tableBody').data('salary'))
+
 
 
 
@@ -17,14 +19,21 @@ function readyNow() {
 
 
 
-function deleteHandler(){
-  
- 
-$(this).parent().parent().remove()
+function deleteHandler() {
 
-    
 
- 
+    let value = $(this).closest('tr').find('.money').text();
+    // .closest() gets the closest tr parent .
+    // .find() finds the element with class 'sibbling' inside that `tr`
+    // .text() gets the text inside the element.
+
+result -= value
+$('#totalCost').empty()
+    $(this).parent().parent().remove()
+ $('#totalCost').append(result)
+
+
+
 }
 
 function submitButton() {
@@ -37,6 +46,7 @@ function submitButton() {
         annualSalary: $('#annualSalary').val()
 
     };
+
     employeeArr.push(personObject);
     $('#firstName').val('');
     $('#lastName').val('');
@@ -50,32 +60,42 @@ console.log(employeeArr);
 
 function appendToDom(array) {
     $('#tableBody').empty();
+
     for (el of array) {
-        if(parseInt(el.annualSalary)>=20001){
-        $('#tableBody').append(`
-            <tr>
-            <th>${el.firstName}</th>
-            <th >${el.lastName}</th>
-            <th>${el.iD}</th>
-            <th>${el.title}</th>
-            <th id = "5" style = "background-color:red;">${el.annualSalary}</th>
-            <th><button id="deleteButton">Delete</button></th>
-            </th>`)
-        } else {
+        if (parseInt(el.annualSalary) >= 20001) {
             $('#tableBody').append(`
-            <tr>
+            <tr class="row">
             <th>${el.firstName}</th>
             <th >${el.lastName}</th>
             <th>${el.iD}</th>
             <th>${el.title}</th>
-            <th data-value= "salary">${el.annualSalary}</th>
-            <th><button id="deleteButton">Delete</button></th>
+            <th class="money" style = "background-color:red;">${el.annualSalary}</th>
+            <th class="button"><button id="deleteButton">Delete</button></th>
             </th>`)
 
-            
+
+
+        } else {
+
+            $('#tableBody').append(`
+            <tr class="row">
+            <th>${el.firstName}</th>
+            <th >${el.lastName}</th>
+            <th>${el.iD}</th>
+            <th>${el.title}</th>
+            <th class="money">${el.annualSalary}</th>
+            <th class="button"><button id="deleteButton">Delete</button></th>
+            </th>`)
+
+
+
+
+
         }
-
-
+        //I need to better understand where i am navigating from /where i am storing my data
+        //  $(this).siblings('table').data('salary', parseInt(el.annualSalary))
+        //console.log(   $(this).siblings('table').data('salary'));
+        console.log($(this))
     }
 
     appendTotal(employeeArr)
@@ -96,4 +116,5 @@ function appendTotal(array) {
     }
 
     $('#totalCost').append(result)
+
 }
