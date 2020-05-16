@@ -2,7 +2,7 @@ $(document).ready(readyNow);
 
 let employeeArr = [];
 
-let totalValue = $('#monthCost').find('#totalCost').text();
+
 
 parseInt($('#tableBody').data('salary'))
 
@@ -24,27 +24,48 @@ function readyNow() {
 function deleteHandler() {
 
 
+
     let value = $(this).closest('tr').find('.money').text();
     // .closest() gets the closest tr parent .
     // .find() finds the element with class 'sibbling' inside that `tr`
     // .text() gets the text inside the element.
 
-result -= value
-let monthResult = result/12;
-$('#totalCost').empty()
+    result -= value
+
+
+    let monthResult = result / 12;
+
+
+    $('#totalCost').empty()
+
+
+    //using .text i loop through and change existing array by splicing out matching object based on salary
+    for (let i = 0; employeeArr.length > i; i++) {
+        if (value == employeeArr[i].annualSalary) {
+            employeeArr.splice(i, 1)
+        }
+    }
+
     $(this).parent().parent().remove()
- $('#totalCost').append(monthResult)
 
 
 
- 
- let totalValue = $('#monthCost').find('#totalCost').text();
+    $('#totalCost').append(monthResult)
 
- if(totalValue>20000){
-    $('#monthCost').find('#totalCost').addClass('red')
- } else{
-    $('#monthCost').find('#totalCost').removeClass('red')
- }
+    //this here includes the conditional to change background to red or white based on new total from delete
+    let totalValue = $('#monthCost').find('#totalCost').text();
+
+    if (totalValue > 20000) {
+        $('#monthCost').find('#totalCost').addClass('red')
+    } else {
+        $('#monthCost').find('#totalCost').removeClass('red')
+    }
+
+
+
+
+
+
 }
 
 function submitButton() {
@@ -58,6 +79,7 @@ function submitButton() {
 
     };
 
+    //established array of object created
     employeeArr.push(personObject);
     $('#firstName').val('');
     $('#lastName').val('');
@@ -65,58 +87,63 @@ function submitButton() {
     $('#title').val('');
     $('#annualSalary').val('');
 
-    appendToDom(employeeArr);
+    // appendToDom(employeeArr);
+    appendToDom(personObject);
 }
-console.log(employeeArr);
 
-function appendToDom(array) {
-    $('#tableBody').empty();
 
-    for (el of array) {
+function appendToDom(theObject) {
 
-            $('#tableBody').append(`
-            <tr class="row">
-            <th>${el.firstName}</th>
-            <th >${el.lastName}</th>
-            <th>${el.iD}</th>
-            <th>${el.title}</th>
-            <th class="money">${el.annualSalary}</th>
-            <th class="button"><button id="deleteButton">Delete</button></th>
-            </th>`)
 
-        //I need to better understand where i am navigating from /where i am storing my data
-        //  $(this).siblings('table').data('salary', parseInt(el.annualSalary))
-        //console.log(   $(this).siblings('table').data('salary'));
-       
-    }
+
+
+    //instead of looping through array. push just entered object
+
+    let row = `<tr class="row">
+  <th>${theObject.firstName}</th>
+  <th >${theObject.lastName}</th>
+  <th>${theObject.iD}</th>
+  <th>${theObject.title}</th>
+  <th class="money">${theObject.annualSalary}</th>
+  <th class="button"><button id="deleteButton">Delete</button></th>
+  </th>`
+
+    $('#tableBody').append(row)
+
+    //I need to better understand where i am navigating from /where i am storing my data
+    //  $(this).siblings('table').data('salary', parseInt(el.annualSalary))
+    //console.log(   $(this).siblings('table').data('salary'));
+
+
 
     appendTotal(employeeArr)
 };
 
-
+//allows result to be grabbed elsewhere
 let result = 0;
 
 
 function appendTotal(array) {
+
+
     $('#totalCost').empty()
 
+    //calculates total annual sallary in array
     result = 0;
     for (el of array) {
 
         result += parseInt(el.annualSalary)
 
     }
-
-    let monthResult = result/12;
-  
+    //creates the monthly salary value
+    let monthResult = result / 12;
+    //appends the monthly salary value
     $('#totalCost').append(monthResult)
 
-   
+
     let totalValue = $('#monthCost').find('#totalCost').text();
-    if(totalValue>20000){
-    $('#monthCost').find('#totalCost').addClass('red')
+    if (totalValue > 20000) {
+        $('#monthCost').find('#totalCost').addClass('red')
 
     }
 }
-
-   
