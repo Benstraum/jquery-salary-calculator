@@ -14,8 +14,17 @@ function readyNow() {
 };
 
 
+
+
+
 function deleteHandler(){
-    $(this).parent().parent().remove()
+  
+ 
+$(this).parent().parent().remove()
+
+    
+
+ 
 }
 
 function submitButton() {
@@ -49,7 +58,7 @@ function appendToDom(array) {
             <th >${el.lastName}</th>
             <th>${el.iD}</th>
             <th>${el.title}</th>
-            <th style = "background-color:red;">${el.annualSalary}</th>
+            <th id = "5" style = "background-color:red;">${el.annualSalary}</th>
             <th><button id="deleteButton">Delete</button></th>
             </th>`)
         } else {
@@ -59,9 +68,11 @@ function appendToDom(array) {
             <th >${el.lastName}</th>
             <th>${el.iD}</th>
             <th>${el.title}</th>
-            <th>${el.annualSalary}</th>
+            <th data-value= "salary">${el.annualSalary}</th>
             <th><button id="deleteButton">Delete</button></th>
             </th>`)
+
+            
         }
 
 
