@@ -95,7 +95,7 @@ function appendToDom(array) {
         //I need to better understand where i am navigating from /where i am storing my data
         //  $(this).siblings('table').data('salary', parseInt(el.annualSalary))
         //console.log(   $(this).siblings('table').data('salary'));
-        console.log($(this))
+       
     }
 
     appendTotal(employeeArr)
