@@ -8,7 +8,10 @@ body {
   background-position: center;
   background-size: cover;
 }
-
+button{
+  width: 80px;
+  height: 40px;
+}
 .box {
   text-align: center;
   max-width: 1200px;
