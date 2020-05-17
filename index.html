@@ -10,41 +10,57 @@
     <script src="./app.js"></script>
 </head>
 <div class="box">
-    <label for="firstName">First Name</label>
-<input type="text" id="firstName" >
-<label for="lastName">Last Name</label>
-<input type="text" id="lastName" >
-<label for="iD">ID</label>
-<input type="number" id="iD" >
-<label for="title">Title</label>
-<input type="text" id="title" >
-<label for="annualSalary">Annual Salary</label>
-<input type="number" id="annualSalary" >
 
-<button id="submitBtn">Submit</button>
+    <div class="inputBox">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName">
+    </div>
+
+    <div class="inputBox">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName">
+    </div>
+
+
+    <div class="inputBox">
+        <label for="iD">ID</label>
+        <input type="number" id="iD">
+    </div>
+
+    <div class="inputBox">
+        <label for="title">Title</label>
+        <input type="text" id="title">
+    </div>
+
+    <div class="inputBox">
+        <label for="annualSalary">Annual Salary</label>
+        <input type="number" id="annualSalary">
+    </div>
+
+    <button id="submitBtn">Submit</button>
 </div>
 <div class="container">
-<table id="theTable">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Annual Salary</th>
-            <th></th>
-            </th>
-    </thead>
-    <tbody id="tableBody">
+    <table id="theTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Annual Salary</th>
+                <th></th>
+                </th>
+        </thead>
+        <tbody id="tableBody">
 
-    </tbody>
-    <tfoot id="monthCost">
-        <tr>
-          <td>Total Monthly: </td>
-          <td  id="totalCost"></td>
-        </tr>
-      </tfoot>
-</table>
+        </tbody>
+        <tfoot id="monthCost">
+            <tr>
+                <td>Total Monthly: </td>
+                <td id="totalCost"></td>
+            </tr>
+        </tfoot>
+    </table>
 </div>
 
 
